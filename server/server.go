@@ -6,14 +6,22 @@ import (
 	"net/http"
     "os"
     "io"
+   // "crypto/tls"
 )
 
 func main() {
 //comment
+   // cert, err1 := tls.LoadX509KeyPair("server.cert.pem", "server.key.pem")
+   // if err1 != nil {
+	//	log.Fatal(err1)
+//	}
+
+    //cfg := &tls.Config{Certificates: []tls.Certificate{cert}}
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", index)
     mux.HandleFunc("/upload", uploadFile)
-	err:= http.ListenAndServe(":3000", mux)
+	//err:= http.ListenAndServe(":3000", mux)
+    err:= http.ListenAndServeTLS(":8443","server.cert.pem", "server.key.pem", mux)
 	log.Fatal(err)
 	
 }

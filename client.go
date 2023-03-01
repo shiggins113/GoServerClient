@@ -16,13 +16,20 @@ func main() {
 	http.HandleFunc("/upload", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "web.html")
 	})
-	http.ListenAndServe(":8080", nil)
+	//err:= http.ListenAndServeTLS(":8080", "server/server.cert.pem", "server/server.key.pem", nil)
+	err:= http.ListenAndServeTLS(":8080", "client.cert.pem", "client.key.pem", nil)
+
+	if err != nil {
+		panic(err)
+	}
+	//http.ListenAndServe(":8080", nil)
+
 	//getRequest()
 }
 
 func getRequest() {
 
-	resp, err := http.Get("http://localhost:3000/")
+	resp, err := http.Get("https://localhost:8443/")
 	checkError(err)
 	
 	defer resp.Body.Close()

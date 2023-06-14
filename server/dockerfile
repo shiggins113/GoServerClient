@@ -1,0 +1,12 @@
+FROM golang:latest
+
+WORKDIR /app
+COPY pkg ./pkg
+COPY init ./init
+COPY go.mod ./
+COPY createDB.sql ./
+RUN go mod tidy -e
+
+RUN cd init && go build -o goserver
+
+CMD ["/app/init/goserver"]

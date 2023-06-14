@@ -1,0 +1,7 @@
+---
+applications:
+  - name: go-client
+    buildpacks:
+      - go_buildpack
+    memory: 64MB
+    disk_quota: 128MB

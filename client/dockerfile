@@ -4,7 +4,6 @@ WORKDIR /app
 COPY pkg ./pkg
 COPY go.mod ./
 COPY web-cert.html ./
-COPY web.html ./
 RUN go mod tidy -e
 
 RUN cd pkg && go build -o goclient

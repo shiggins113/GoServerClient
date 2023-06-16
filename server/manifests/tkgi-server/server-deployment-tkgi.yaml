@@ -12,19 +12,6 @@ spec:
     tier: frontend
   type: LoadBalancer
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: server-pv-claim
-  labels:
-    app: server
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 20Gi
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -45,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: higgins113/my-go-server
+      - image: higgins113/my-go-server:amd64
         name: server
         env:
         - name: DB_HOST

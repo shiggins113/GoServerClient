@@ -15,6 +15,8 @@ func Start(cfg *config.Config) {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/cert", cert)
+	mux.HandleFunc("/certData", certData)
+	mux.HandleFunc("/certDelete", certDelete)
 	err:= http.ListenAndServe(":8081", mux)
 	log.Fatal(err)
 }

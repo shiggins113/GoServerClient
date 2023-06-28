@@ -32,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: higgins113/my-go-server
+      - image: higgins113/my-go-server:test
         name: server
         env:
         - name: DB_HOST
@@ -48,7 +48,7 @@ spec:
         volumeMounts:
         - name: server-persistent-storage
           mountPath: /var/www/html
-      - image: higgins113/my-go-client
+      - image: higgins113/my-go-client:test
         name: client
       volumes:
       - name: server-persistent-storage

@@ -1,4 +1,6 @@
 FROM golang:latest
+ARG TARGETOS
+ARG TARGETARCH
 
 WORKDIR /app
 COPY pkg ./pkg
@@ -7,6 +9,6 @@ COPY go.mod ./
 COPY createDB.sql ./
 RUN go mod tidy -e
 
-RUN cd init && go build -o goserver
+RUN cd init && CGO_ENABLED=0 GOOS=${TARGETOS:-linux} GOARCH=${TARGETARCH} go build -o goserver
 
 CMD ["/app/init/goserver"]

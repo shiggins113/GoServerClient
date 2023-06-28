@@ -32,7 +32,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: higgins113/my-go-server:amd64
+      - image: higgins113/my-go-server
         name: server
         env:
         - name: DB_HOST

@@ -4,16 +4,6 @@ Sample Go Application that runs a client and server application, writes decoded 
 
 To install on a K8s cluster, run `kubectl create -f server/manifests/`
 
-From there, you need to run one of two commands, depending if you are installing on a TKGI cluster or a `kind` cluster.
-
-TKGI:
-
-`kubectl create -f server/manifests/tkgi-server`
-
-KIND:
-
-`kubectl create -f server/manifests/kind/ `
-
 Once running, you can view the UI using:
 
 `kubectl port-forward server-<xxx> 8080:8080`
